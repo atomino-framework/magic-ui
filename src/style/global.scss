@@ -1,0 +1,24 @@
+@import "vars";
+
+:global(*) {
+  box-sizing: border-box;
+  outline: none;
+  font-family: "Helvetica Neue", serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+:global(html) {
+  width: 100vw;
+  height: 100vh;
+  font-size: 12px;
+}
+
+:global(body) {
+  width: 100vw;
+  height: 100vh;
+  font-size: 12px;
+  margin: 0;
+  overflow: hidden;
+  background-image: $background-image;
+  background-size: cover;
+}

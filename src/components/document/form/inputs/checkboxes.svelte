@@ -1,0 +1,84 @@
+<script lang="ts">
+	export let value: Array<string> = [];
+	export let options = [];
+	export let inline: boolean;
+	export let name = '';
+
+	function input(event){
+		let val = event.target.value;
+		let index = value.indexOf(val)
+		if(index === -1) value.push(val);
+		else value.splice(index, 1);
+	}
+</script>
+<main class:inline>
+	{#each options as option}
+		<label><input on:change={input} type="checkbox" value={option.value} checked={value.indexOf(option.value) >= 0}> {option.label}</label>
+	{/each}
+</main>
+
+<style lang="scss">
+	@import "../../../../style/mixins";
+
+	main {
+		@include input;
+		//border-bottom: 1px solid #fff3;
+		padding: 0;
+		line-height: 26px;
+		//border-radius: 4px;
+		//color: #5fd1ff;
+		//font-weight: 500;
+		//background-color: #0009;
+		max-height: 100px;
+		overflow-y: auto;
+		column-width: 120px;
+		column-rule: 1px solid #fff1;
+		column-gap: 0;
+		&.inline{
+			display: flex;
+		}
+
+		label {
+			cursor: pointer;
+			transition: all .2s;
+			&:hover {
+				background-color: $input--background-focused;
+				color: white;
+			}
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			padding: 0 8px;
+			display: block;
+			font-size: 11px;
+			font-weight: bold;
+			input {vertical-align: middle;}
+		}
+
+		input {
+			-moz-appearance: none;
+			-webkit-appearance: none;
+			-o-appearance: none;
+			outline: none;
+			content: none;
+			cursor: pointer;
+			text-shadow: 0 0 6px black;
+		}
+
+		input:before {
+			transition: all .2s;
+			font-family: "Font Awesome 5 Pro";
+			content: "\f204";
+			font-size: 16px;
+			color: $highlight-color;
+			opacity: .65;
+			font-weight: 100;
+		}
+		input:checked:before {
+			opacity: 1;
+			content: "\f205";
+		}
+	}
+
+
+</style>

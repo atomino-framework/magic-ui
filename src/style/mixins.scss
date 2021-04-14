@@ -1,0 +1,84 @@
+@import "vars";
+
+@mixin ellipsis {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	word-wrap: normal;
+}
+
+@mixin button {
+	@include input;
+
+	cursor: pointer;
+	transition: all 0.3s;
+	color: $button--color;
+	font-weight: 500;
+	background: $button--background;
+	&:hover, &:focus {
+		background: $button--background-focused;
+	}
+}
+
+@mixin button-bar {
+	display: flex;
+	padding: 3px 0;
+	button {
+		padding: 3px 10px !important;
+		flex-grow: 1;
+		&:not(:first-child) { border-left: 1px solid $button-bar--separator-color;}
+	}
+}
+
+@mixin transparent-button {
+	@include input;
+	cursor: pointer;
+	transition: all 0.3s;
+	font-weight: 500;
+	background-color: transparent;
+	color: $transparent-button--color;
+	&:focus { background-color: transparent;}
+	&:hover {
+		color: $transparent-button--hover-color;
+		text-shadow: 0 0 11px $transparent-button--hover-glow-color;
+	}
+}
+
+@mixin semi-transparent-button {
+	@include transparent-button;
+	background-color: $semi-transparent-button--background;
+	&:focus { background-color: $semi-transparent-button--background;}
+
+	&:hover { background-color: $semi-transparent-button--hover-background;}
+}
+@mixin semi-transparent-dark-button {
+	@include transparent-button;
+	background-color: $semi-transparent-button-dark--background;
+	&:focus { background-color: $semi-transparent-button-dark--background;}
+	&:hover { background-color: $semi-transparent-button-dark--hover-background;}
+}
+
+
+@mixin input {
+	color: $input--color;
+	background-color: $input--background;
+	border: 0;
+	padding: 6px 10px;
+	border-radius: 3px;
+	font-size: 12px;
+	transition: all .3s;
+	&:focus {
+		background-color: $input--background-focused;
+	}
+	&::placeholder {
+		color: $input--placeholder-color;
+	}
+}
+
+@mixin card {
+	box-shadow: $card--shadow;
+	backdrop-filter: blur(4px);
+	border-radius: 5px;
+	background: $card--background;
+	color: $card--color;
+}

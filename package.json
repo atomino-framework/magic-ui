@@ -1,0 +1,21 @@
+{
+  "author": {
+    "name": "Gergely Laborci"
+  },
+  "bundleDependencies": [],
+  "dependencies": {
+    "balloon-css": "^1.2.0",
+    "cbytes": "^1.0.2",
+    "font-awesome-filetypes": "^2.1.0",
+  },
+  "deprecated": false,
+  "description": "",
+  "license": "ISC",
+  "main": "src/components/app.svelte",
+  "name": "atomino-magic-ui",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "1.0.0",
+  "keywords": []
+}
