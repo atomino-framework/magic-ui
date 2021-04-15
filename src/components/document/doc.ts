@@ -3,7 +3,7 @@ import ErrorMessage from "../../modules/error/error-message";
 import {SvelteComponent} from "svelte";
 
 export default class Doc {
-	public get class() {return Object.getPrototypeOf(this).constructor; }
+	public get class():typeof Doc{return Object.getPrototypeOf(this).constructor; }
 
 	static component: typeof SvelteComponent;
 	static $idPrefix: string;
@@ -14,6 +14,8 @@ export default class Doc {
 		docManager.show($id)
 	}
 	static create(...any): any {}
+	public static icon: string;
+	public get icon(): string {return this.class.icon;}
 
 	protected _id: null | number;
 	public get label(): string {return "LABEL";}

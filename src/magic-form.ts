@@ -29,7 +29,7 @@ export default class MagicForm {
 		label: (item) => string,
 		info: (item) => string = (item) => 'id: ' + item['id'],
 	): typeof FormDoc {
-		return Object.assign(class extends FormDoc {}, {$idPrefix, list, icon, buttons, label, fetcher, info});
+		return Object.assign(class extends FormDoc {}, {$idPrefix, list, icon, buttons, label, fetcher, info, sections:[]});
 	}
 
 	static Doc: typeof FormDoc = FormDoc;

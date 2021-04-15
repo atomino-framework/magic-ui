@@ -13,14 +13,17 @@ import ErrorValidation from "../../../modules/error/error-validation";
 
 export default class FormDoc extends Doc {
 
+	public get class():typeof FormDoc{return Object.getPrototypeOf(this).constructor; }
+
+
 	static component: typeof SvelteComponent = DocumentFormComponent;
 	public static buttons: Array<any>;
 	public static label: (item) => string;
 	public static info: (item) => string;
 	public static sections: Array<Section> = [];
 	public static fetcher: FormFetcher;
-	public static icon: string;
 	public static list: List;
+	
 	public validationErrors: Writable<Object> = writable([]);
 
 	static create(
@@ -37,12 +40,10 @@ export default class FormDoc extends Doc {
 	}
 	public get label(): string {return this.class.label(this._item);}
 	public get info(): string {return this.class.info(this._item);}
-	public get icon(): string {return this.class.icon;}
 	public get list(): List {return this.class.list;}
 	public get exists(): boolean {return typeof this._item.id === 'number';}
 	public get buttons(): Array<FormAction> {return this.class.buttons;}
 
-	public get class(): typeof FormDoc {return Object.getPrototypeOf(this).constructor}
 	public _item: { id: number | null } = {id: null};
 	public item: Writable<{ id: number | null }> = writable(this._item);
 

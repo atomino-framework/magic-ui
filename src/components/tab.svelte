@@ -11,7 +11,7 @@
 </script>
 
 <main class:selected on:click title="{doc.label}">
-	<i class="fas fa-crown"></i>
+	<i class={doc.icon}></i>
 	<span class="info">{doc.info}</span>
 	<i on:click={()=>close(doc)} class="close fas fa-times"></i>
 	<span class="label">{doc.label}</span>
