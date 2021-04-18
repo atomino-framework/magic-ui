@@ -1,6 +1,10 @@
 <script lang="ts">
+	import {onMount} from "svelte";
+
 	export let value = false;
-	export let name = '';
+	export const name = '';
+
+	$: value = value??false;
 
 </script>
 

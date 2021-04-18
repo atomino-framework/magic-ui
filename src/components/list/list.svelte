@@ -1,21 +1,21 @@
 <script lang="ts">
-    import {writable} from "svelte/store";
-	import List from "./list";
+	import {writable} from "svelte/store";
+	import List from "./list.ts";
 
-    export let selected:boolean = false;
+	export let selected:boolean = false;
     export let list:List;
     const listStore = writable(list);
     list.reload = () => loadData();
 
     $: (() => { if (selected && !list.initialised) loadData();})();
 
-    let searchTimer:number;
+    let searchTimer:any;
     function search(){
 		clearTimeout(searchTimer);
 		searchTimer = setTimeout(loadData, 250);
 	}
 
-    let pageTimer:number;
+    let pageTimer:any;
     function setPage() {
         if ($listStore.page === '') return;
         $listStore.page = isNaN($listStore.page) ? 1 : $listStore.page;

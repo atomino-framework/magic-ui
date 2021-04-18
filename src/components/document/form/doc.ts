@@ -13,17 +13,16 @@ import ErrorValidation from "../../../modules/error/error-validation";
 
 export default class FormDoc extends Doc {
 
-	public get class():typeof FormDoc{return Object.getPrototypeOf(this).constructor; }
-
+	public get class(): typeof FormDoc {return Object.getPrototypeOf(this).constructor; }
 
 	static component: typeof SvelteComponent = DocumentFormComponent;
 	public static buttons: Array<any>;
-	public static label: (item) => string;
-	public static info: (item) => string;
+	public static label: (item: any) => string;
+	public static info: (item: any) => string;
 	public static sections: Array<Section> = [];
 	public static fetcher: FormFetcher;
 	public static list: List;
-	
+
 	public validationErrors: Writable<Object> = writable([]);
 
 	static create(
@@ -33,8 +32,8 @@ export default class FormDoc extends Doc {
 		fetcher: FormFetcher,
 		buttons: Array<FormAction>,
 		sections: Array<Section>,
-		label: (item) => string,
-		info: (item) => string = (item) => 'id: ' + item['id'],
+		label: (item: any) => string,
+		info: (item: any) => string = (item: any) => 'id: ' + item['id'],
 	): typeof FormDoc {
 		return Object.assign(class extends this {}, {$idPrefix, list, icon, buttons, label, sections, fetcher, info});
 	}
@@ -48,7 +47,7 @@ export default class FormDoc extends Doc {
 	public item: Writable<{ id: number | null }> = writable(this._item);
 
 	load() {
-		this.class.fetcher.get(this.id).then((item: { id: number }) => {
+		this.class.fetcher.get(this.id).then((item: any) => {
 			this._item = item;
 			this.item.set(item);
 			this.id = item.id;
@@ -61,16 +60,17 @@ export default class FormDoc extends Doc {
 	save() {
 		this.validationErrors.set({})
 		this.class.fetcher.save(this.id, this._item)
-			.then(res => toastManager.success('Saved successfully'))
 			.then(res => {
+				toastManager.success('Saved successfully')
+				this.id = res.id;
 				this.list.reload();
 				this.load();
 			})
 			.catch(error => {
 				if (error instanceof ErrorValidation) {
 					error.response.json().then(messages => {
-						let errors = {};
-						messages.forEach(message => {
+						let errors: any = {};
+						messages.forEach((message: any) => {
 							if (typeof errors[message.field] === "undefined") errors[message.field] = [];
 							errors[message.field].push(message.message);
 						})
@@ -80,14 +80,15 @@ export default class FormDoc extends Doc {
 				throw error;
 			})
 	}
+
 	delete() {
-		if(confirm('You are about to delete:' + "\n" + this.label + "\n"+'Are you sure?'))
-		this.class.fetcher.delete(this.id)
-			.then(()=>this.close())
-			.then(()=>this.list.reload())
+		if (confirm('You are about to delete:' + "\n" + this.label + "\n" + 'Are you sure?'))
+			this.class.fetcher.delete(this.id)
+				.then(() => this.close())
+				.then(() => this.list.reload())
 	}
 
-	static addSection(label:string, wide: boolean = false):Section{
+	static addSection(label: string, wide: boolean = false): Section {
 		let section = new Section(label, wide);
 		this.sections.push(section);
 		return section;

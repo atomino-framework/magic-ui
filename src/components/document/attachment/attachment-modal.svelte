@@ -1,10 +1,8 @@
 <script lang="ts">
 	import Modal from "../../../elements/modal.svelte";
-	import FormDoc from "../form/doc";
+	import FormDoc from "../form/doc.ts";
 	import Category from "./attachment-category.svelte";
 
-	export let value = "";
-	export let name = '';
 	export let close = () => console.log('close')
 	export let doc: FormDoc;
 	export let categories: Array<{ name: string, label: string }> = null;
@@ -13,13 +11,13 @@
 	let categoryElements = [];
 </script>
 
-<Modal bind:this={modal} icon="inverse fad fa-folder-open" title="Attachments" big>
+<Modal bind:this={modal} icon="inverse far fa-folder-open" title="Attachments" big>
 	<nav slot="nav">
 		<button on:click={close}><i class="fas fa-times"></i></button>
 	</nav>
 	<main>
 		{#each categories as category, i}
-			<Category bind:this={categoryElements[i]} name="{category.name}" label="{category.label}" doc={doc} reload={reload}></Category>
+			<Category bind:this={categoryElements[i]} name="{category.name}" label="{category.label}" doc={doc} reload={reload}/>
 		{/each}
 	</main>
 </Modal>

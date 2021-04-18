@@ -1,5 +1,5 @@
 <script>
-	import {modals} from "./modal-manager";
+	import {modals} from "./modal-manager.ts";
 </script>
 
 {#each $modals as Modal}

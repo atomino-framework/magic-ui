@@ -5,7 +5,7 @@ import FormDoc from "../doc";
 
 export default class SelectorInput extends Input {
 	static component: typeof SvelteComponent = Component;
-	props: { api: string, multi: boolean, Form: typeof FormDoc } = {api: '', multi: false, Form: null}
+	props: { api: string, multi: boolean, Form: typeof FormDoc|null } = {api: '', multi: false, Form: null}
 
 	api(api:string): this {
 		this.props.api = api;

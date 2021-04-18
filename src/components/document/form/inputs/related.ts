@@ -5,7 +5,7 @@ import FormDoc from "../doc";
 
 export default class RelatedInput extends Input {
 	static component: typeof SvelteComponent = Component;
-	props: { api: string, Form: typeof FormDoc } = {api: '', Form: null}
+	props: { api: string, Form: typeof FormDoc|null } = {api: '', Form: null}
 
 	api(api: string): this {
 		this.props.api = api;

@@ -2,7 +2,7 @@
 	export let value: Array<string> = [];
 	export let options = [];
 	export let inline: boolean;
-	export let name = '';
+	export const name = '';
 
 	function input(event){
 		let val = event.target.value;

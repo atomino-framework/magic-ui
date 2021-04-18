@@ -1,9 +1,9 @@
 <script lang="ts">
-	import {beforeUpdate, onMount, tick} from "svelte";
+	import {beforeUpdate} from "svelte";
 
 	export let value: string | Array<number> = '';
 	export let api: string = '';
-	export let name = '';
+	export const name = '';
 	export let Form = null;
 	export let multi: boolean = false;
 
@@ -27,9 +27,9 @@
 		} else value = id;
 	}
 
-	function remove(id: number) {
+	function remove(id: any) {
 		if (multi) {
-			var index = value.indexOf(id);
+			let index = value.indexOf(id);
 			if (index !== -1) value.splice(index, 1);
 			value = [...value];
 		} else value = '';
@@ -64,7 +64,7 @@
 			<span>
 				<i on:click={()=>remove(item.id)} class="remove fas fa-times"></i>
 				<span>{item.value} ({item.id})</span>
-				{#if Form}<i on:click={()=>open(item.id)} class="open fas fa-external-link"></i>{/if}
+				{#if Form}<i on:click={()=>open(item.id)} class="open fas fa-external-link-alt"></i>{/if}
 			</span>
 			{/each}
 		{/if}
@@ -94,8 +94,9 @@
 				color: $highlight-color;
 
 				&:before {
-					font-family: "Font Awesome 5 Pro";
-					content: '\f067';
+					font-family: "Font Awesome 5 Free";
+					content: '\f0fe';
+					font-weight: bold;
 					padding: 0 10px;
 				}
 			}
@@ -113,12 +114,7 @@
 				display: inline-flex;
 				align-items: center;
 				> * { line-height: 12px;}
-				i {
-					font-weight: normal;
-					font-style: normal;
-				}
-				span {
-				}
+				i {}
 
 				i.remove {
 					font-size: 12px;

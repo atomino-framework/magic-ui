@@ -5,7 +5,7 @@ export default class ListFetcher {
 
 	constructor(protected api: string) {}
 
-	list(page: number, sort: IListSorting, quickSearch: string, search: Object, limit: number): Promise<ListFetcherResult> {
+	list(page: number, sort: IListSorting, quickSearch: string|null, search: Object, limit: number): Promise<ListFetcherResult> {
 		return fetch(this.api + '/list/' + page, {
 				method: 'POST',
 				body: JSON.stringify({sort: sort.fields, quickSearch, search, limit})

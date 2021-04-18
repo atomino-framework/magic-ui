@@ -10,8 +10,8 @@ export default class MenuItem {
 	static readonly type = type;
 
 	public action: Function | null = null;
-	public type = null;
-	public submenu = [];
+	public type: number|null = null;
+	public submenu: Array<MenuItem> = [];
 
 	constructor(public label: string, public icon: string) {}
 
@@ -23,21 +23,21 @@ export default class MenuItem {
 		return menuItem;
 	}
 
-	static Page(label, icon, page: typeof Doc, id:number|null = null) {
+	static Page(label:string, icon:string, page: typeof Doc, id:number|null = null) {
 		const menuItem = new MenuItem(label, icon);
 		menuItem.action = () => page.open(id)
 		menuItem.type = MenuItem.type.form;
 		return menuItem;
 	}
 
-	static Menu(label, icon, submenu) {
+	static Menu(label:string, icon:string, submenu: Array<MenuItem>) {
 		const menuItem = new MenuItem(label, icon);
 		menuItem.submenu = submenu;
 		menuItem.type = MenuItem.type.menu;
 		return menuItem;
 	}
 
-	static Custom(label, icon, action) {
+	static Custom(label:string, icon:string, action: Function) {
 		const menuItem = new MenuItem(label, icon);
 		menuItem.action = action;
 		menuItem.type = MenuItem.type.custom;

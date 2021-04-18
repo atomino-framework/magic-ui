@@ -1,5 +1,5 @@
 export default class ErrorMessage extends Error{
-    constructor(message, public info:string = '') {
+    constructor(message:any, public info:string = '') {
         super(message);
     }
 }

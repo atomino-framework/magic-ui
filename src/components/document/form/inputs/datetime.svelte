@@ -1,12 +1,12 @@
 <script lang="ts">
 	export let value = "";
-	export let name = '';
+	export const name = '';
 
 	$: datetime = datetimeLocal(value, true);
 
 	function input(event){
 		let val = event.target.value;
-		value = datetimeLocal(val, true, true);
+		value = datetimeLocal(val, true, true) ?? '';
 		console.log(value)
 	}
 

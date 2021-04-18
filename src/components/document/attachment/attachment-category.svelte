@@ -1,6 +1,6 @@
 <svelte:options accessors/>
 <script lang="ts">
-	import FormDoc from "../form/doc";
+	import FormDoc from "../form/doc.ts";
 	import {writable} from "svelte/store";
 	import File from "./attachment-file.svelte";
 
@@ -48,7 +48,7 @@
 </script>
 <section class="block" on:dragover={dragover} class:over on:drop={drop} on:dragleave={()=>over = false} on:dragover|preventDefault={()=>{}}>
 	<input bind:this={input} multiple type="file" style="display: none" on:change={upload}>
-	<div class="block-label"><b>{label}</b><span>({name})</span><i on:click={()=>{input.click()}} class="fas fa-folder-upload"></i></div>
+	<div class="block-label"><b>{label}</b><span>({name})</span><i on:click={()=>{input.click()}} class="far fa-folder-open"></i></div>
 	<div class="files">
 		{#each $files as file, index}
 			<File file={file} doc={doc} collection={name} reload={reload} index={index}/>

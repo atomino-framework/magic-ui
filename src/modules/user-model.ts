@@ -5,10 +5,10 @@ import ErrorUnauhtorized from "./error/error-unauhtorized";
 export default class UserModel {
 
 	public id: number | null = null;
-	public name:string|null = null;
-	public avatar:string|null = null;
+	public name: string | null = null;
+	public avatar: string | null = null;
 
-	constructor(data:any) {
+	constructor(data: any) {
 		this.id = data.id;
 		this.name = data.name;
 		this.avatar = data.avatar;
@@ -16,11 +16,11 @@ export default class UserModel {
 
 	static logout() { throw new ErrorUnauhtorized(null); }
 
-	static isAuthenticated():Promise<any> {
+	static isAuthenticated(): Promise<any> {
 		return fetch('/api/auth').then(xhr => xhr.json()).then(data => {
 			if (data !== false) {
 				let auth = new UserModel(data);
-				toastManager.success('Authenticated', auth.name)
+				toastManager.success('Authenticated', auth.name??'')
 				user.update(() => auth)
 			} else {
 				user.update(() => null)
@@ -28,7 +28,7 @@ export default class UserModel {
 		});
 	}
 
-	static login(login:string, password:string) {
+	static login(login: string, password: string) {
 		return fetch('/api/auth/login', {
 			method: 'post',
 			body: JSON.stringify({login, password})

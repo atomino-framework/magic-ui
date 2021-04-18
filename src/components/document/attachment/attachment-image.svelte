@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Modal from "../../../elements/modal.svelte";
-	import FormDoc from "../form/doc";
+	import FormDoc from "../form/doc.ts";
 
 	export let close;
 	export let doc: FormDoc;
@@ -94,7 +94,7 @@
 
 </script>
 
-<Modal bind:this={modal} icon="inverse fad fa-image" title="Edit image focus">
+<Modal bind:this={modal} icon="inverse far fa-image" title="Edit image focus">
 	<nav slot="nav">
 		<button on:click={reset}><i class="fas fa-crosshairs"></i></button>
 		<button on:click={save}><i class="fas fa-times"></i></button>

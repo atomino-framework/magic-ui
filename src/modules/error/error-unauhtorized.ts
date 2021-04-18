@@ -1,3 +1,3 @@
 export default class ErrorUnauhtorized extends Error{
-	constructor(public response:Response) {super();}
+	constructor(public response:Response|null) {super();}
 }

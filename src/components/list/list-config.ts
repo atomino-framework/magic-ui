@@ -48,12 +48,12 @@ export class ListSorting {
 	}
 }
 
-export class ListAction {constructor(public icon: string, public label: string, public onClick: (item) => void) {}}
+export class ListAction {constructor(public icon: string, public label: string, public onClick: (item:any) => void) {}}
 
 export default class ListConfig {
 
 	static Sorting(label: string, twoWay: boolean = true, initial: boolean = false, key: string | null = null): ListSorting {return new ListSorting(label, twoWay, initial, key)};
-	static Action(icon: string, label: string, onClick: (item) => void): ListAction {return new ListAction(icon, label, onClick)};
+	static Action(icon: string, label: string, onClick: (item:any) => void): ListAction {return new ListAction(icon, label, onClick)};
 
 	public sorting: Array<IListSorting> = [];
 	public initialSortingIndex: number;
@@ -69,7 +69,7 @@ export default class ListConfig {
 		public cardify: Function
 	) {
 		sortings.forEach(sorting => this.sorting.push(...sorting.get()));
-		let initialSortingIndex = this.sorting.findIndex(item => item.initial);
+		let initialSortingIndex = this.sorting.findIndex((item:any) => item.initial);
 		this.initialSortingIndex = initialSortingIndex > -1 ? initialSortingIndex : 0;
 	}
 }

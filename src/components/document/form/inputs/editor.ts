@@ -4,7 +4,7 @@ import {SvelteComponent} from "svelte";
 
 export default class EditorInput extends Input {
 	static component: typeof SvelteComponent = Component;
-	props: { Editor: typeof SvelteComponent, buttonText: string} = {Editor: null, buttonText: 'Open Editor'}
+	props: { Editor: typeof SvelteComponent|null, buttonText: string} = {Editor: null, buttonText: 'Open Editor'}
 
 	editor(editor: typeof SvelteComponent) {
 		this.props.Editor = editor;

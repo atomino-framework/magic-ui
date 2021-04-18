@@ -4,10 +4,10 @@ import ErrorMessage from "./error/error-message";
 import ErrorNotFound from "./error/error-not-found";
 import ErrorValidation from "./error/error-validation";
 
-export default function handleFetch(response) {
+export default function handleFetch(response:Response) {
     switch (response.status) {
         case 200:
-            return response.json();
+            return response.json().catch((e)=>{throw new ErrorMessage("Some error occurred (" + response.status + ")", response.url)});
         case 401:
             throw new ErrorUnauhtorized(response);
         case 403:

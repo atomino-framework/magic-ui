@@ -1,6 +1,5 @@
 <script>
 	import {portal} from "svelte-portal";
-
 	export let icon = "fad fa-spinner fa-pulse"
 </script>
 

@@ -1,6 +1,6 @@
 <script>
 	import {portal} from "svelte-portal";
-	import {toasts} from "./toast-manager";
+	import {toasts} from "./toast-manager.ts";
 </script>
 
 <main use:portal={"body"}>

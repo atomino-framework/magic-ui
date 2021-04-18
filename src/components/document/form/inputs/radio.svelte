@@ -1,9 +1,7 @@
 <script lang="ts">
 	export let value: string = '';
 	export let options = [];
-	export let inline: boolean;
-	export let name = '';
-
+	export const name = '';
 
 	function input(event){
 		value = event.target.value
@@ -34,6 +32,7 @@
 		column-rule: 1px solid #fff1;
 		column-gap: 0;
 		display: flex;
+
 
 		label {
 			cursor: pointer;

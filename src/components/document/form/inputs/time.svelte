@@ -1,7 +1,6 @@
 <script lang="ts">
 	export let value = "";
-	export let name = '';
-
+	export const name = '';
 </script>
 
 <input type="time" bind:value>

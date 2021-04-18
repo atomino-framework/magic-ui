@@ -1,14 +1,14 @@
 <script lang="ts">
 	import Modal from "../../../elements/modal.svelte";
-	import toastManager from "../../../elements/toast-manager";
+	import toastManager from "../../../elements/toast-manager.ts";
 	import cbytes from "cbytes";
-	import FormDoc from "../form/doc";
+	import FormDoc from "../form/doc.ts";
 	import ImageModal from "./attachment-image.svelte";
 
 	import {getClassNameForExtension} from "font-awesome-filetypes";
 	import {beforeUpdate, onMount} from "svelte";
 	import {writable} from "svelte/store";
-	import modalManager from "../../../elements/modal-manager";
+	import modalManager from "../../../elements/modal-manager.ts";
 
 	export let collection: string = null;
 	export let close;
@@ -21,7 +21,7 @@
 	let title;
 	let properties = writable([]);
 
-	$: icon = "inverse fad " + getClassNameForExtension(file.name.split('.').pop());
+	$: icon = "inverse far " + getClassNameForExtension(file.name.split('.').pop());
 	onMount(() => {
 		$properties = ((typeof file.properties === "object") && !(file.properties instanceof Array)) ? [...Object.entries(file.properties)] : [];
 		filename = file.name;
@@ -64,9 +64,9 @@
 <Modal bind:this={modal} icon={icon} title="File details">
 	<nav slot="nav">
 		{#if (file.isImage)}
-			<button on:click={()=>{ modalManager.show(ImageModal, {file, doc, reload}); }}><i class="fad fa-image"></i></button>
+			<button on:click={()=>{ modalManager.show(ImageModal, {file, doc, reload}); }}><i class="fas fa-image"></i></button>
 		{/if}
-		<button on:click={remove}><i class="fad fa-trash-alt"></i></button>
+		<button on:click={remove}><i class="fas fa-trash-alt"></i></button>
 		<button on:click={close}><i class="fas fa-times"></i></button>
 	</nav>
 	<main>

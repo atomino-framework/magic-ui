@@ -1,14 +1,12 @@
 <script>
-    import NavPanel from "./nav-panel.svelte";
-    import List from "./list/list.svelte"
-    import {settings} from "../modules/store";
-    import {activeList} from "../modules/store";
+	import NavPanel from "./nav-panel.svelte";
+	import List from "./list/list.svelte"
+	import {activeList, settings} from "../modules/store.ts";
 	import Document from "./document/document.svelte";
 	import TabBar from "./tab-bar.svelte";
-    import Tab from "./tab.svelte";
+	import Tab from "./tab.svelte";
+	import MagicDoc from "../magic-doc.ts";
 
-
-	import MagicDoc from "../magic-doc";
 	let activeDoc = MagicDoc.manager.active;
 	let documents = MagicDoc.manager.documents;
 

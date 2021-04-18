@@ -1,7 +1,7 @@
 export default class Input {
 	static component: any;
 
-	public hint: string;
+	public hint: string|null = null;
 	public properties = {}
 	public inlineLabel = true;
 

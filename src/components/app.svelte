@@ -1,12 +1,12 @@
 <script>
 	import AppLogin from "./app-login.svelte";
 	import AppAdmin from "./app-admin.svelte";
-	import {user} from "../modules/store";
+	import {user} from "../modules/store.ts";
 	import Overlay from "../elements/overlay.svelte"
 	import Toast from "../elements/toast.svelte"
 	import Modals from "../elements/modals.svelte"
-	import ErrorHandler from "../modules/error/error-handler";
-	import UserModel from "../modules/user-model";
+	import UserModel from "../modules/user-model.ts";
+	import ErrorHandler from "../modules/error/error-handler.ts";
 	ErrorHandler.register();
 	let fetchIsAuthenticated = UserModel.isAuthenticated();
 </script>
@@ -22,7 +22,6 @@
 		<AppAdmin/>
 	{/if}
 {/await}
-
 <Toast/>
 <Modals/>
 

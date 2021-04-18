@@ -1,7 +1,7 @@
 <script>
-	import UserModel from "../modules/user-model";
-	import {user, settings} from "../modules/store";
-	import Menu from "./menu.svelte"
+	import UserModel from "../modules/user-model.ts";
+	import {user, settings} from "../modules/store.ts";
+	import Menu from "./menu.svelte";
 
 	let wide = localStorage.getItem('nav-panel-wide');
 	function setWide() { (wide = !wide) ? localStorage.setItem('nav-panel-wide', '1') : localStorage.removeItem('nav-panel-wide')}

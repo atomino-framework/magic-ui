@@ -1,5 +1,5 @@
 <script>
-	import MenuItem from "../modules/menu-item";
+	import MenuItem from "../modules/menu-item.ts";
 	import {onMount} from 'svelte';
 
 	export let isOpen = true;

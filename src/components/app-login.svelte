@@ -1,6 +1,6 @@
 <script>
 	import Overlay from "../elements/overlay.svelte";
-	import UserModel from "../modules/user-model";
+	import UserModel from "../modules/user-model.ts";
 
 	let loginName = "elvis@elvis.hu"
 	let password = 'galaga';

@@ -1,6 +1,6 @@
 <script lang="ts">
 	export let value = "";
-	export let name = '';
+	export const name = '';
 	export let code = false;
 
 	function keydown(event) {
@@ -14,7 +14,6 @@
 			event.preventDefault();
 		}
 	}
-
 </script>
 
 <div class:growing={true} class:code data-replicated-value={value}>

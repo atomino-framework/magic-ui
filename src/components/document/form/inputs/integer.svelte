@@ -1,7 +1,7 @@
 <script lang="ts">
-	export let name = '';
-
+	export const name = '';
 	export let value = '0';
+
 	let oldvalue = value;
 	function input() {
 		if(value === '') return value = '0';

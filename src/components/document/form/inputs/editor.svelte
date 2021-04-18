@@ -1,8 +1,8 @@
 <script lang="ts">
-	import modalManager from "../../../../elements/modal-manager";
+	import modalManager from "../../../../elements/modal-manager.ts";
 
 	export let value = "";
-	export let name = '';
+	export const name = '';
 	export let Editor = null;
 	export let buttonText = "Open";
 

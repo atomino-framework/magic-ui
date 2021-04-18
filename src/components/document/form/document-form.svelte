@@ -2,7 +2,7 @@
 	import Section from "./section.svelte"
 	import Input from "./input.svelte"
 	import Error from "./input-error.svelte"
-	import FormDoc from "./doc";
+	import type FormDoc from "./doc.ts";
 
 	export let doc: FormDoc;
 	let item = doc.item;

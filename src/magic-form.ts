@@ -26,8 +26,8 @@ export default class MagicForm {
 		icon: string,
 		fetcher: FormFetcher,
 		buttons: Array<FormAction>,
-		label: (item) => string,
-		info: (item) => string = (item) => 'id: ' + item['id'],
+		label: (item:any) => string,
+		info: (item:any) => string = (item) => 'id: ' + item['id'],
 	): typeof FormDoc {
 		return Object.assign(class extends FormDoc {}, {$idPrefix, list, icon, buttons, label, fetcher, info, sections:[]});
 	}

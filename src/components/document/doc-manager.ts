@@ -3,7 +3,7 @@ import Doc from "./doc";
 
 class DocManager {
 
-	public active: Writable<Doc>;
+	public active: Writable<Doc|null>;
 	public _documents: Array<Doc> = [];
 	public documents: Writable<Array<Doc>>
 

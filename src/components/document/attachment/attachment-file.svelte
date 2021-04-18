@@ -1,9 +1,9 @@
 <script lang="ts">
 	import cbytes from "cbytes";
 	import Details from "./attachment-details.svelte";
-	import modalManager from "../../../elements/modal-manager";
+	import modalManager from "../../../elements/modal-manager.ts";
 	import {getClassNameForExtension} from "font-awesome-filetypes";
-	import FormDoc from "../form/doc";
+	import FormDoc from "../form/doc.ts";
 
 
 	export let file: Object = {};
@@ -17,7 +17,7 @@
 
 	function details() { modalManager.show(Details, {file, doc, reload, collection});}
 
-	$: icon = "fad " + getClassNameForExtension(file.name.split('.').pop())
+	$: icon = "far " + getClassNameForExtension(file.name.split('.').pop())
 
 	function dragover(event) {
 		if (event.dataTransfer.types[0] === 'attachment' && collection === event.dataTransfer.types[1]) {
@@ -58,7 +58,7 @@
 <section class="file" class:right class:left on:click={details} on:dragleave={dragleave} draggable="true" on:drop={drop} on:dragstart={dragstart} on:dragover={dragover}>
 	<div class="preview">
 		{#if (file.isImage)}
-			<img src="{file.thumbnail}" width="100" height="100" draggable="false">
+			<img alt="" src="{file.thumbnail}" width="100" height="100" draggable="false">
 			<div class="dimensions">{file.width}x{file.height}</div>
 		{:else }
 			<i class={icon}></i>

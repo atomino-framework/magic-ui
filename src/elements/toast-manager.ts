@@ -1,19 +1,19 @@
-import {writable} from "svelte/store";
+import {Writable, writable} from "svelte/store";
 
 
-export let toasts = writable([])
+export let toasts:Writable<any> = writable([])
 
 class ToastManager {
-    info(label, info = '', icon = "fad fa-info-circle", timeout = 3000) {
+    info(label:string, info:string = '', icon:string = "far fa-info-circle", timeout:number = 3000) {
         this.add('info', info, label, icon, timeout);
     }
-    success(label, info = '', icon = "fas fa-check", timeout = 3000) {
+    success(label:string, info:string = '', icon:string = "far fa-check", timeout:number = 3000) {
         this.add('success', info, label, icon, timeout);
     }
-    error(label, info = '', icon = "fad fa-exclamation-circle", timeout = 3000) {
+    error(label:string, info:string = '', icon:string = "far fa-exclamation-circle", timeout:number = 3000) {
         this.add('error', info, label, icon, timeout);
     }
-    add(type, info = '', label, icon = "fad fa-user", timeout = 3000) {
+    add(type:string, info:string = '', label:string, icon:string = "far fa-user", timeout:number = 3000) {
         let toast = {type, info, label, icon, hide: false};
         toasts.update(toasts => [toast, ...toasts]);
         setTimeout(() => {

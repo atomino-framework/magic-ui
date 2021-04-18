@@ -13,7 +13,7 @@ export default class FormFetcher {
 
 	get(id: number | null): Promise<Object> { return fetch(this.api + (id !== null ? id : 'blank')).then(handleFetch)}
 
-	save(id: number, item: Object) {
+	save(id: number | null, item: Object) {
 		return fetch(this.api + (id !== null ? id : 'new'),
 			{
 				method: 'POST',
@@ -21,7 +21,7 @@ export default class FormFetcher {
 			}).then(handleFetch)
 	}
 
-	delete(id: number) { return fetch(this.api + id, {method: "DELETE"}).then(handleFetch)}
+	delete(id: number | null) { return fetch(this.api + id, {method: "DELETE"}).then(handleFetch)}
 }
 
 class AttachmentFetcher {
@@ -42,7 +42,7 @@ class AttachmentFetcher {
 	order(id: number, collection: string, filename: string, index: number) {
 		return fetch(this.api + 'order/' + id, {method: "POST", body: JSON.stringify({collection, index, filename})}).then(handleFetch)
 	}
-	add(id: number, collection: string, filename: string, from: boolean|string) {
+	add(id: number, collection: string, filename: string, from: boolean | string) {
 		return fetch(this.api + 'add/' + id, {method: "POST", body: JSON.stringify({collection, filename, from})}).then(handleFetch)
 	}
 }

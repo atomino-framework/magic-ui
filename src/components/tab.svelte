@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Doc from "./document/doc";
+	import Doc from "./document/doc.ts";
 
 	export let selected;
 	export let doc: Doc;

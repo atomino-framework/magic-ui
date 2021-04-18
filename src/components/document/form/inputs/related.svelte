@@ -1,11 +1,12 @@
 <script lang="ts">
 	import {beforeUpdate, onMount, tick} from "svelte";
-	import FormDoc from "../doc";
+	import FormDoc from "../doc.ts";
 
 	export let value: string | Array<number> = '';
 	export let api: string = '';
-	export let name = '';
-	export let Form: typeof FormDoc = null;
+	export const name = '';
+	export let Form: typeof FormDoc | null = null;
+
 	let values: Array<{ id: number, value: string }> = [];
 	let storedValue: string | Array<number> = '';
 

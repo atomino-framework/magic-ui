@@ -1,9 +1,8 @@
 <script lang="ts">
 	export let value = "";
-	export let name = '';
-
+	export const name = '';
 </script>
-<script context="module"></script>
+
 <input type="text" bind:value>
 
 <style lang="scss">
