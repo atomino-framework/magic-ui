@@ -6,8 +6,13 @@ export default class Input {
 	public inlineLabel = true;
 
 
-	constructor(public field: string, public label: string | null = null) {
-		this.label = this.label !== null ? this.label : this.field;
+	constructor(public field: string|{field: string, label:string}, public label: string | null = null) {
+		if(typeof field === "object"){
+			this.label = this.label ?? field.label;
+			this.field = field.field;
+		}else{
+			this.label = this.label !== null ? this.label : this.field.toString();
+		}
 	}
 
 	get compact(){

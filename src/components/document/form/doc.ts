@@ -43,6 +43,8 @@ export default class FormDoc extends Doc {
 	public get exists(): boolean {return typeof this._item.id === 'number';}
 	public get buttons(): Array<FormAction> {return this.class.buttons;}
 
+	static addAction(action: FormAction) { this.buttons.push(action);}
+
 	public _item: { id: number | null } = {id: null};
 	public item: Writable<{ id: number | null }> = writable(this._item);
 

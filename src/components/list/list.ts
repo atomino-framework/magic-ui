@@ -17,20 +17,24 @@ export default class List {
 	static create(
 		label: string,
 		icon: string,
-		actions: Array<ListAction>,
 		limit: number,
 		sortings: Array<ListSorting>,
-		fetcher: ListFetcher,
-		card: typeof SvelteComponent,
-		cardify: Function
+		fetcher: ListFetcher | string,
+		card: {component: typeof SvelteComponent, cardify: Function},
 	) {
-		let config = new ListConfig(label, icon, actions, limit, sortings, fetcher, card, cardify);
+		if (typeof fetcher === "string") fetcher = new ListFetcher(fetcher);
+		let config = new ListConfig(label, icon, [], limit, sortings, fetcher, card.component, card.cardify);
 		return new List(config);
 	}
 
 	constructor(config: ListConfig) {
 		this.config = config;
 		this.sortingIndex = config.initialSortingIndex;
+	}
+
+	addAction(action: ListAction) {
+		if (this.config.actions === null) this.config.actions = [];
+		this.config.actions.push(action);
 	}
 
 	reload(): Promise<any> { return this.loadData(); }
